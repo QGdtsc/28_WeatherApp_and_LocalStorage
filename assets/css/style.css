@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* .material-symbols-outlined {
+    font-size: 1.5rem;
+} */
+
+.return_arrow_city_selection {
+    font-size: 2rem;
+}
+
+.styleFavoritesButton {
+    font-family: 'Material Symbols Outlined';
+    font-size: 2rem;
+}
+
+/* Étoile vide */
+.star_icon_favorite_empty {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  font-size: 2rem;
+}
+
+/* Étoile pleine */
+.star_icon_favorite_filled {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+  font-size: 2rem;
+}
+
+.icon_current_localisation {
+    font-size: 2rem;
+}
+
+.widget_wind {
+    background-color: oklch(21% 0.006 285.885);
+    /* border: 2px solid goldenrod; */
+    border-radius: 50%;
+    width: 40%;
+    aspect-ratio: 1/1;
+    position: relative;
+    color: white;
+    z-index: 0;
+}
+
+.widget_wind .widget_wind_content {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2;
+}
+
+.widget_wind .widget_wind_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.widget_wind .arrow_wind {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: oklch(55.1% 0.027 264.364);
+    font-size: 8rem;
+    z-index: 1;
+}
