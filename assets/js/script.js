@@ -591,7 +591,15 @@ function check_if_already_in_favorites() {
     const favoriteStarBtn = document.getElementById("star_favorite_or_not")
     // recuperer les favoris
     let listFavoritesLocations = localStorage.getItem('villes')
-    listFavoritesLocations = JSON.parse(listFavoritesLocations)
+
+    if (listFavoritesLocations === null) {
+        // console.log("je crée un tableau")
+        listFavoritesLocations = []
+    } else {
+        // console.log('je vais transformer mon tableau')
+        // JSON.parse(recupLocalStorage)
+        listFavoritesLocations = JSON.parse(listFavoritesLocations)
+    }
 
     if (listFavoritesLocations.some(loc => loc[0] === currentLocationInFav)) {
         const index_element_to_remove = listFavoritesLocations.findIndex(loc => loc[0] === currentLocationInFav)
