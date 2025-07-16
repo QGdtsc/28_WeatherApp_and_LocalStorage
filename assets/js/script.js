@@ -45,13 +45,31 @@ function success(pos) {
 function error(err) {
     console.warn(`ERREUR (${err.code}): ${err.message}`);
 }
+// function getLocation() {
+//     navigator.geolocation.getCurrentPosition(success, error, options);
+// }
+// // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 function getLocation() {
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    navigator.geolocation.getCurrentPosition(position => {
+        lat = position.coords.latitude
+        lon = position.coords.longitude
+        searchWithLatitudeAndLongitude(lat, lon)
+    })
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+function searchWithLatitudeAndLongitude(lat, lon) {
+    url_weather_coords = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=${lang}&units=metric`
+    console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=${lang}&units=metric`)
+    fetchDataFromWeatherURL(url_weather_coords)
+}
+
+
+
+
 
 function getLocation_and_toggleCityInput() {
-    navigator.geolocation.getCurrentPosition(success, error, options)
+    getLocation()
+    // navigator.geolocation.getCurrentPosition(success, error, options)
     toggleCityInput()
 }
 
@@ -270,7 +288,6 @@ async function fetchDataFromWeatherURL(url_weather_coords) {
         console.log('Error : ', error.message)
     }
 }
-
 
 
 // Fonctions nécessaires au changement de ville
@@ -578,7 +595,7 @@ function check_if_already_in_favorites() {
 
     if (listFavoritesLocations.some(loc => loc[0] === currentLocationInFav)) {
         const index_element_to_remove = listFavoritesLocations.findIndex(loc => loc[0] === currentLocationInFav)
-        console.log('deja en favori')
+        // console.log('deja en favori')
         console.log(index_element_to_remove)
         // Ajouter l'étoile pleine
         favoriteStarBtn.innerHTML = `
@@ -589,7 +606,7 @@ function check_if_already_in_favorites() {
             </button>
         `
     } else {
-        console.log('pas en favori')
+        // console.log('pas en favori')
         // Ajouter l'étoile vide
         favoriteStarBtn.innerHTML = `
             <button type="button" class="flex flex-row items-center p-2" id="star_favorite_or_not" onclick="addFavoriteLocation()">
